@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using Exercises;
 using System;
+using System.Collections.Generic;
+
 
 namespace Tests
 {
@@ -11,6 +13,7 @@ namespace Tests
     
         [SetUp]
         public void Init() {
+
             ll = new LinkedList();
             foreach (var s in data) {
                 ll.AddToEnd(s);
@@ -40,6 +43,8 @@ namespace Tests
                 }
             }
         }
+
+        
         
         [TestCase(10)]
         public void Count(int ans) {
@@ -49,7 +54,7 @@ namespace Tests
         [Test]
         public void AddToStart() {
             ll.AddToStart("start");
-            
+
             Assert.AreEqual(11, ll.Count());
             Assert.AreEqual("start", ll.GetNodeAt(0).Data);
         }
@@ -95,6 +100,7 @@ namespace Tests
         public void DeleteNodeAt() {
             ll.DeleteNodeAt(4);
             ll.DeleteNodeAt(100);
+
 
             Assert.AreEqual(false, ll.Find("xyz"));
             Assert.AreEqual("aeiou", ll.GetNodeAt(4).Data);

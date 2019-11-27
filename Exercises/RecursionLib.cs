@@ -22,7 +22,12 @@ namespace Exercises
         /// <param name="numsList"></param>
         /// <returns></returns>
         public List<int> CountRec(int num, List<int> numsList) {
-            return new List<int>();
+
+            if(numsList.Count < num) {
+                numsList.Add(numsList.Count + 1);
+                return CountRec(num, numsList);
+            }
+            return numsList;
         }
 
         /// <summary>
@@ -33,7 +38,15 @@ namespace Exercises
         /// <param name="ans"></param>
         /// <returns></returns>
         public long ExponentialRec(int num, int pow, long ans = 1) {
-            return 1;
+            if(pow == 0) {
+                return ans; 
+            } else if(pow == 1) {
+                return num; 
+            } else {
+                ans = num * ExponentialRec(num, pow - 1);
+                return ans; 
+            }
+
         }
 
         /// <summary>
@@ -43,7 +56,12 @@ namespace Exercises
         /// <param name="revWord"></param>
         /// <returns></returns>    
         public string WordReverseRec(string word, string revWord = "") {
-            return "";
+            if ((word == null) || (word.Length <= 1)) {
+                return word;
+            }
+
+           revWord = WordReverseRec(word.Substring(1)) + word[0];
+           return revWord;
         }
 
 
